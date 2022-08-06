@@ -59,7 +59,7 @@ const Home: NextPage<PageContent> = ({ nationality, cat }: PageContent) => {
                 justifyContent: 'flex-start',
                 textShadow: '1px 1px 1px black',
               }}>
-              <p>Here's a random cat</p>
+              <p>Here&apos;s a random cat</p>
             </article>
           </div>
         )}
