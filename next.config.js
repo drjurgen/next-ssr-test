@@ -9,6 +9,9 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  // images: {
+  //   loader: 'cloudinary',
+  // },
 };
 
 module.exports = nextConfig;

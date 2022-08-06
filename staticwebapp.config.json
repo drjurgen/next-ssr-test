@@ -15,17 +15,5 @@
         "Access-Control-Allow-Headers": "X-Authorization"
       }
     }
-  ],
-  "globalHeaders": {
-    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-    "X-Frame-Options": "SAMEORIGIN",
-    "X-XSS-Protection": "1; mode=block",
-    "X-Content-Type-Options": "nosniff",
-    "X-Permitted-Cross-Domain-Policies": "none",
-    "Referrer-Policy": "no-referrer",
-    "Permissions-Policy": "autoplay=()",
-    "Cache-Control": "public, max-age=31536000, immutable",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS"
-  }
+  ]
 }
