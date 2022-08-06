@@ -26,7 +26,7 @@ const Home: NextPage<Nationality> = (nationality: Nationality) => {
       <main className={styles.main}>
         <h1 className={styles.title}>This is a SSR TEST</h1>
 
-        <p className={styles.description}>Let's see if it works - {nationality.name}</p>
+        <p className={styles.description}>Let&apos;s see if it works - {nationality.name}</p>
 
         {nationality && (
           <div className={styles.grid}>
