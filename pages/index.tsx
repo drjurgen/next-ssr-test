@@ -1,8 +1,11 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import { GetStaticProps } from 'next';
+
+interface PageContent {
+  nationality: Nationality;
+  bacon: string[];
+}
 
 interface Nationality {
   name: string;
@@ -14,7 +17,8 @@ interface Country {
   probability: number;
 }
 
-const Home: NextPage<Nationality> = (nationality: Nationality) => {
+const Home: NextPage<PageContent> = ({ nationality, bacon }: PageContent) => {
+  console.log(bacon);
   return (
     <div className={styles.container}>
       <Head>
@@ -40,6 +44,19 @@ const Home: NextPage<Nationality> = (nationality: Nationality) => {
             })}
           </div>
         )}
+
+        <p className={styles.description}>Bacon</p>
+        {nationality && (
+          <div className={styles.grid}>
+            {bacon.map((bacon, i) => {
+              return (
+                <article key={`bacon-${i}`} className={styles.card}>
+                  <p>{bacon}</p>
+                </article>
+              );
+            })}
+          </div>
+        )}
       </main>
 
       <footer className={styles.footer}>Powered by Jurgen</footer>
@@ -47,11 +64,17 @@ const Home: NextPage<Nationality> = (nationality: Nationality) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const res = await fetch('https://api.nationalize.io/?name=nicolai');
-  const nationality = await res.json();
+export const getStaticProps: GetStaticProps = async () => {
+  const nationalityRes = await fetch('https://api.nationalize.io/?name=nicolai');
+  const nationality = await nationalityRes.json();
+  const baconRes = await fetch('https://baconipsum.com/api/?type=meat-and-filler');
+  const bacon = await baconRes.json();
   return {
-    props: nationality,
+    props: {
+      nationality,
+      bacon,
+    },
+    revalidate: 20, // In seconds
   };
 };
 
